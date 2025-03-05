@@ -1,29 +1,15 @@
 package fr.aurelien.worm_project.UI;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.Point;
 import java.awt.Rectangle;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-import javax.swing.border.LineBorder;
-
 import fr.aurelien.worm_project.Core.Drawable;
 import fr.aurelien.worm_project.Core.IUpdatable;
-import fr.aurelien.worm_project.Core.Transform;
-import fr.aurelien.worm_project.worm.CustomRectangle;
-import fr.aurelien.worm_project.worm.Fruit;
-import fr.aurelien.worm_project.worm.Worm;
 
 public class PlayPanel extends JPanel implements IUpdatable, Drawable
 {

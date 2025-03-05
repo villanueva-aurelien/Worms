@@ -1,17 +1,13 @@
 package fr.aurelien.worm_project.worm;
 
-import static fr.aurelien.worm_project.Core.Logger.log;
-
 import java.awt.Color;
 import java.awt.Point;
-import java.nio.channels.Channel;
 import java.util.ArrayList;
 
 import fr.aurelien.worm_project.Core.ISubscriber;
 import fr.aurelien.worm_project.Core.IUpdatable;
 import fr.aurelien.worm_project.Core.Observer;
 import fr.aurelien.worm_project.Core.Transform;
-import fr.aurelien.worm_project.Core.World;
 import fr.aurelien.worm_project.UI.MainWindow;
 import fr.aurelien.worm_project.UI.PlayPanel;
 
@@ -336,9 +332,6 @@ public class Worm implements IUpdatable, ISubscriber
             case "direction":
                       
                 _direction=(Direction)tab[0];
-                
-                
-
                 break;
         
             default:
