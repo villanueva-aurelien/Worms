@@ -94,6 +94,8 @@ public class PanelScore extends JPanel
                     if(error == 0)
                     {
                         MainWindow.getProfilManager().createProfil(name, a);
+                        SaveProfilJson s = new SaveProfilJson();
+                        s.saveJson();
                         updateMainApp();
                     }
                 }    

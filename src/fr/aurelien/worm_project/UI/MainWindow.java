@@ -1,5 +1,9 @@
 package fr.aurelien.worm_project.UI;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
@@ -9,19 +13,18 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 
 import fr.aurelien.worm_project.LoadProfilJson;
 import fr.aurelien.worm_project.SaveProfilJson;
 import fr.aurelien.worm_project.Core.IUpdatable;
 import fr.aurelien.worm_project.Core.Keybord;
-import fr.aurelien.worm_project.Core.Observer;
 import fr.aurelien.worm_project.Core.ProfilManager;
 import fr.aurelien.worm_project.Core.World;
 
 public class MainWindow
 {
     private static CopyOnWriteArrayList<IUpdatable> _updatList = new CopyOnWriteArrayList<>();
-    //private static ArrayList<IUpdatable> _updatList = new ArrayList<>();
     private static JFrame _jframe;
     private static JPanel _currentPanel;
     private static Timer _timer = new Timer();
@@ -35,7 +38,6 @@ public class MainWindow
     {
         _jframe = new JFrame();
     
-        //_jframe.setPreferredSize(new Dimension(_sizeX, _sizeY));
         _jframe.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         _jframe.setAlwaysOnTop(false);
         _jframe.setExtendedState(_jframe.MAXIMIZED_BOTH);
@@ -57,14 +59,22 @@ public class MainWindow
                {
                     // mettre ici la commande a executé avant fermeture!
                     //_jf.dispose();
-                    SaveProfilJson s = new SaveProfilJson();
-                    s.saveJson();
+                   
                     System.exit(0);
                }
            }
        });     
 
-       
+        // Ajout d'un listener pour recentrer en cas de redimensionnement
+        _jframe.addComponentListener(new ComponentAdapter() 
+        {
+            @Override
+            public void componentResized(ComponentEvent e) 
+            {
+                centerFrame();
+            }
+        });
+
       
        _jframe.setFocusable(true);
        _jframe.setContentPane(new BackGround("chat.png"));
@@ -77,6 +87,14 @@ public class MainWindow
        _jframe.setVisible(true);
        LoadProfilJson l = new LoadProfilJson();
        l.chargerContenuJSON();
+    }
+
+    private static void centerFrame() 
+    {
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (screenSize.width - _jframe.getWidth()) / 2;
+        int y = (screenSize.height - _jframe.getHeight()) / 2;
+        _jframe.setLocation(x, y);
     }
 
     public static void stopTimer()

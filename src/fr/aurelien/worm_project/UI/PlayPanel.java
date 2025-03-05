@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Rectangle;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
@@ -15,8 +14,6 @@ public class PlayPanel extends JPanel implements IUpdatable, Drawable
 {
     private static int _height = 600;
     private static int _width = 800;
-    private Rectangle _zone;
-    private long _updateNumber = 0;
     private final long _id;
     private static long _counter = 0;
    

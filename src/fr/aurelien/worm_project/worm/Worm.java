@@ -25,7 +25,6 @@ public class Worm implements IUpdatable, ISubscriber
     private final Transform TRANSFORM;
     private ArrayList<Point> _listPointWorm = new ArrayList<>();
     private int _valueColor = 0;
-    private int cc = 0;
     private String _name = "direction";
 
 

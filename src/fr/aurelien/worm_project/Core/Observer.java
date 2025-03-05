@@ -6,7 +6,6 @@ public class Observer
 {
     private static Observer _obs;
     private ArrayList<Channel> _channelList = new ArrayList<>();
-    private static int _id = 0;
 
     public static Observer getInstance()
     {
