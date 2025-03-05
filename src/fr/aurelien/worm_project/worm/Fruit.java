@@ -1,17 +1,10 @@
 package fr.aurelien.worm_project.worm;
 
-import static fr.aurelien.worm_project.Core.Logger.log;
-
 import java.awt.Color;
-import java.awt.Graphics2D;
 import java.awt.Point;
-import java.awt.Rectangle;
-import java.util.ArrayList;
-
 import fr.aurelien.worm_project.Core.IUpdatable;
 import fr.aurelien.worm_project.Core.Transform;
 import fr.aurelien.worm_project.UI.MainWindow;
-import fr.aurelien.worm_project.UI.PlayPanel;
 
 public class Fruit implements IUpdatable
 {

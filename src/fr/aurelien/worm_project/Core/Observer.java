@@ -34,7 +34,6 @@ public class Observer
             if(c.getName() == name)
                 throw new RuntimeException("Name already exist !!");
         }
-        //.add(new Channel(owner, name + String.valueOf(_id)));
         _channelList.add(new Channel(owner, name));
         return _channelList.getLast();
     }

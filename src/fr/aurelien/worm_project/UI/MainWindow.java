@@ -1,14 +1,11 @@
 package fr.aurelien.worm_project.UI;
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.LayoutManager;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.CopyOnWriteArrayList;
-import static fr.aurelien.worm_project.Core.Logger.log;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -20,7 +17,6 @@ import fr.aurelien.worm_project.Core.Keybord;
 import fr.aurelien.worm_project.Core.Observer;
 import fr.aurelien.worm_project.Core.ProfilManager;
 import fr.aurelien.worm_project.Core.World;
-import fr.aurelien.worm_project.worm.Worm;
 
 public class MainWindow
 {

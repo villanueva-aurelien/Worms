@@ -35,8 +35,6 @@ public class PlayPanel extends JPanel implements IUpdatable, Drawable
         _id = _counter++;
         MainWindow.startTimer();
         MainWindow.addUpdatableToList(this);   
-        
-        
     }
     
     @Override
@@ -104,7 +102,7 @@ public class PlayPanel extends JPanel implements IUpdatable, Drawable
         //g.drawImage(null, 0, 0, null);
         //g.setColor(Color.WHITE);
         //g.fillRect(MainWindow.get_World().get_Transform().absolutTransform().get_point().x, MainWindow.get_World().get_Transform().absolutTransform().get_point().y, _width, _height);
-        g.setColor(Color.BLUE);
+        g.setColor(null);
         g.drawRect(MainWindow.get_World().get_Transform().absolutTransform().get_point().x, MainWindow.get_World().get_Transform().absolutTransform().get_point().y, _width, _height);
         //g.draw(_zone);
     }

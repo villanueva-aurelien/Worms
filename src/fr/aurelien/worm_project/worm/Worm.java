@@ -325,7 +325,6 @@ public class Worm implements IUpdatable, ISubscriber
     @Override
     public void receiveNotification(String channelName, Object... payload) 
     {
-
         Object[] tab = payload.clone();
         switch (channelName) 
         {
@@ -338,6 +337,5 @@ public class Worm implements IUpdatable, ISubscriber
                 break;
         }
     }
-
 }
 
