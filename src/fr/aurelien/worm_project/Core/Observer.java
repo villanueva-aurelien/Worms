@@ -1,10 +1,6 @@
 package fr.aurelien.worm_project.Core;
 
-import static fr.aurelien.worm_project.Core.Logger.log;
-
 import java.util.ArrayList;
-
-import javax.management.RuntimeErrorException;
 
 public class Observer 
 {
@@ -27,7 +23,7 @@ public class Observer
         
     }
 
-    public Channel createChannel(IPublisher owner, String name)
+    public void createChannel(IPublisher owner, String name)
     {
         for(Channel c: _channelList)
         {
@@ -35,12 +31,15 @@ public class Observer
                 throw new RuntimeException("Name already exist !!");
         }
         _channelList.add(new Channel(owner, name));
-        return _channelList.getLast();
     }
 
-    public void destryChannel()
+    public void destryChannel(Object owner, String chan)
     {
-        _channelList.removeLast();
+        for(int i = 0; i < _channelList.size(); i++)
+        {
+            if(_channelList.get(i).getName() == chan && _channelList.get(i).getObject() == owner)
+                _channelList.remove(i);
+        }
     }
 
     public void subscribe(ISubscriber sub, String name)
@@ -49,6 +48,15 @@ public class Observer
         {
             if(c.getName() == name)
                 c.addSubscriber(sub);
+        }
+    }
+
+    public void publish(Object owner, String name, Object ... arg)
+    {
+        for(int i = 0; i < _channelList.size(); i++)
+        {
+            if(_channelList.get(i).getName() == name && _channelList.get(i).getObject() == owner)
+                _channelList.get(i).publish(arg);
         }
     }
 }

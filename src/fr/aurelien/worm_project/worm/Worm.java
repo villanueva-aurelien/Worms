@@ -325,17 +325,8 @@ public class Worm implements IUpdatable, ISubscriber
     @Override
     public void receiveNotification(String channelName, Object... payload) 
     {
-        Object[] tab = payload.clone();
-        switch (channelName) 
-        {
-            case "direction":
-                      
-                _direction=(Direction)tab[0];
-                break;
-        
-            default:
-                break;
-        }
+        if(channelName == _name)
+            _direction = (Direction)payload[0];      
     }
 }
 

@@ -1,24 +1,20 @@
 package fr.aurelien.worm_project.Core;
 
-import static fr.aurelien.worm_project.Core.Logger.log;
-
 import java.awt.Component;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import javax.swing.JFrame;
-
-import fr.aurelien.worm_project.worm.Worm;
 import fr.aurelien.worm_project.worm.Worm.Direction;
 
 public class Keybord implements KeyListener, IPublisher
 {
     private Component _comp;
-    private Channel _channel;
+    private String _channelName = "direction";
 
     public Keybord(Component frame)
     {
-        _channel = Observer.getInstance().createChannel(this, "direction");
+        Observer.getInstance().createChannel(this, _channelName);
+        
         _comp = frame;
         _comp.addKeyListener(this);
     }
@@ -37,6 +33,7 @@ public class Keybord implements KeyListener, IPublisher
 
     public void destroy()
     {
+        Observer.getInstance().destryChannel(this, _channelName);
         _comp.removeKeyListener(this);
     }
 
@@ -47,19 +44,19 @@ public class Keybord implements KeyListener, IPublisher
         
         if(key == KeyEvent.VK_LEFT)
         {
-            _channel.publish(Direction.gauche);
+            Observer.getInstance().publish(this, _channelName,  Direction.gauche);
         }
         else if(key == KeyEvent.VK_RIGHT)
         {
-            _channel.publish(Direction.droite);
+            Observer.getInstance().publish(this, _channelName,  Direction.droite);
         }
         else if(key == KeyEvent.VK_UP)
         {
-            _channel.publish(Direction.haut);
+            Observer.getInstance().publish(this, _channelName,  Direction.haut);
         }
         else if(key == KeyEvent.VK_DOWN)
         {
-            _channel.publish(Direction.bas);
+            Observer.getInstance().publish(this, _channelName,  Direction.bas);
         } 
     }
     

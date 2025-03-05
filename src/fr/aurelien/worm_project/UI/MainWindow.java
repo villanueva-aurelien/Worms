@@ -86,7 +86,6 @@ public class MainWindow
         _timer.cancel();
         _world.finish();
         _key.destroy();
-        Observer.getInstance().destryChannel();
     }
     
     public static void startGame()
