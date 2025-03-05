@@ -1,0 +1,9 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "c:\\Users\\D3FfS\\Downloads\\jar_files\\byte-buddy-1.14.9.jar",
+        "c:\\Users\\D3FfS\\Downloads\\jar_files\\jackson-annotations-2.17.0-rc1.jar",
+        "c:\\Users\\D3FfS\\Downloads\\jar_files\\jackson-core-2.17.0-rc1.jar",
+        "c:\\Users\\D3FfS\\Downloads\\jar_files\\jackson-databind-2.17.0-rc1.jar"
+    ]
+}
