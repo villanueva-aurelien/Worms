@@ -13,10 +13,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
-
 import fr.aurelien.worm_project.LoadProfilJson;
-import fr.aurelien.worm_project.SaveProfilJson;
 import fr.aurelien.worm_project.Core.IUpdatable;
 import fr.aurelien.worm_project.Core.Keybord;
 import fr.aurelien.worm_project.Core.ProfilManager;
@@ -36,8 +33,31 @@ public class MainWindow
 
     public MainWindow()
     {
+        configJFrame();
+
+        // Ajout d'un listener pour recentrer en cas de redimensionnement
+        _jframe.addComponentListener(new ComponentAdapter() 
+        {
+            @Override
+            public void componentResized(ComponentEvent e) 
+            {
+                centerFrame();
+            }
+        });
+
+      
+       _jframe.setFocusable(true);
+       addImage();
+       addMenuPanel();
+       _jframe.pack();
+       _jframe.setLocationRelativeTo(null);
+       _jframe.setVisible(true);
+        loadJSonfile();
+    }
+
+    private void configJFrame()
+    {
         _jframe = new JFrame();
-    
         _jframe.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         _jframe.setAlwaysOnTop(false);
         _jframe.setExtendedState(_jframe.MAXIMIZED_BOTH);
@@ -63,30 +83,25 @@ public class MainWindow
                     System.exit(0);
                }
            }
-       });     
+       }); 
+    }
 
-        // Ajout d'un listener pour recentrer en cas de redimensionnement
-        _jframe.addComponentListener(new ComponentAdapter() 
-        {
-            @Override
-            public void componentResized(ComponentEvent e) 
-            {
-                centerFrame();
-            }
-        });
-
-      
-       _jframe.setFocusable(true);
-       _jframe.setContentPane(new BackGround("chat.png"));
-       MenuPanel mp = new MenuPanel();
+    private void addMenuPanel()
+    {
+        MenuPanel mp = new MenuPanel();
        _currentPanel = mp;
        _jframe.add(_currentPanel, BorderLayout.CENTER);
-       
-       _jframe.pack();
-       _jframe.setLocationRelativeTo(null);
-       _jframe.setVisible(true);
-       LoadProfilJson l = new LoadProfilJson();
-       l.chargerContenuJSON();
+    }
+
+    private void addImage()
+    {
+        _jframe.setContentPane(new BackGround("chat.png"));
+    }
+
+    private void loadJSonfile()
+    {
+        LoadProfilJson l = new LoadProfilJson();
+        l.chargerContenuJSON();
     }
 
     private static void centerFrame() 
@@ -135,19 +150,6 @@ public class MainWindow
         }, 0, _periodnumber);
         _timer = t;
     }
-
-    /* public static void updateJFrame(JPanel j)
-    {
-        if(j == null)
-            return;
-        
-        _jframe.remove(_currentPanel);
-
-        _jframe.add(j);
-        _currentPanel = j;
-        _jframe.repaint();
-        _jframe.pack();
-    } */
 
     public static void updateJFrame(JPanel j) {
         if (j == null) 
@@ -204,7 +206,7 @@ public class MainWindow
         return _PM;
     }
 
-    public static void setProfilManager(ArrayList list)
+    public static void setProfilManager(ArrayList<ProfilManager> list)
     {
         _PM.setListProfil(list);
     }
