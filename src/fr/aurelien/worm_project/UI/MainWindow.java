@@ -33,25 +33,9 @@ public class MainWindow
 
     public MainWindow()
     {
-        configJFrame();
-
-        // Ajout d'un listener pour recentrer en cas de redimensionnement
-        _jframe.addComponentListener(new ComponentAdapter() 
-        {
-            @Override
-            public void componentResized(ComponentEvent e) 
-            {
-                centerFrame();
-            }
-        });
-
-      
-       _jframe.setFocusable(true);
-       addImage();
-       addMenuPanel();
-       _jframe.pack();
-       _jframe.setLocationRelativeTo(null);
-       _jframe.setVisible(true);
+        configJFrame();       
+        addImage();
+        addMenuPanel();     
         loadJSonfile();
     }
 
@@ -84,6 +68,20 @@ public class MainWindow
                }
            }
        }); 
+
+       // Ajout d'un listener pour recentrer en cas de redimensionnement
+       _jframe.addComponentListener(new ComponentAdapter() 
+       {
+           @Override
+           public void componentResized(ComponentEvent e) 
+           {
+               centerFrame();
+           }
+       });
+
+       _jframe.setFocusable(true);
+       _jframe.setLocationRelativeTo(null);
+       _jframe.setVisible(true);
     }
 
     private void addMenuPanel()
@@ -91,11 +89,13 @@ public class MainWindow
         MenuPanel mp = new MenuPanel();
        _currentPanel = mp;
        _jframe.add(_currentPanel, BorderLayout.CENTER);
+       _jframe.pack();
     }
 
     private void addImage()
     {
         _jframe.setContentPane(new BackGround("chat.png"));
+        _jframe.pack();
     }
 
     private void loadJSonfile()
