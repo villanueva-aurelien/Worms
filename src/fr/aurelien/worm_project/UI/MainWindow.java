@@ -17,6 +17,7 @@ import fr.aurelien.worm_project.LoadProfilJson;
 import fr.aurelien.worm_project.Core.IUpdatable;
 import fr.aurelien.worm_project.Core.Keybord;
 import fr.aurelien.worm_project.Core.ProfilManager;
+import fr.aurelien.worm_project.Core.SoundMusic;
 import fr.aurelien.worm_project.Core.World;
 
 public class MainWindow
@@ -82,6 +83,8 @@ public class MainWindow
        _jframe.setFocusable(true);
        _jframe.setLocationRelativeTo(null);
        _jframe.setVisible(true);
+       SoundMusic music = new SoundMusic();
+       music.playMusic("G:\\prog\\Java\\projet\\Worms\\Enterin.The.Skies.mp3");
     }
 
     private void addMenuPanel()
